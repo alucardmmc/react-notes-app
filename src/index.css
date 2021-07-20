@@ -1,5 +1,8 @@
 :root {
   --note-bg-yellow: #fef68a;
+  --note-bg-blue: #67d7cc;
+  --button-bg-grey: #e1e1e1;
+  --button-bg-grey-active: #ededed;
 }
 
 body {
