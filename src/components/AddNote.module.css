@@ -1,0 +1,31 @@
+.note--new {
+  background-color: var(--note-bg-blue);
+}
+
+.note__textarea {
+  border: none;
+  resize: none;
+  background-color: var(--note-bg-blue);
+}
+
+.note__textarea:focus {
+  outline: none;
+}
+
+.note__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button--save {
+  background-color: var(--button-bg-grey);
+  border: none;
+  border-radius: 0.9rem;
+  padding: 5px 10px 5px 10px;
+}
+
+.button--save:hover {
+  background-color: var(--button-bg-grey-active);
+  cursor: pointer;
+}
