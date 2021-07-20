@@ -2,15 +2,21 @@ import { useState } from 'react';
 import classes from './AddNote.module.css';
 import Card from './ui/Card';
 
-const AddNote = ({ saveNoteHandler }) => {
+const AddNote = ({ handleSaveNote }) => {
   const [noteText, setNoteText] = useState('');
+  const characterLimit = 200;
 
-  const textChangeHandler = (event) => {
-    setNoteText(event.target.value);
+  const handleTextChange = (event) => {
+    if (characterLimit - event.target.value.length >= 0) {
+      setNoteText(event.target.value);
+    }
   }
 
-  const buttonSaveHandler = () => {
-    saveNoteHandler(noteText);
+  const handleSaveClick = () => {
+    if (noteText.trim().length > 0) {
+      handleSaveNote(noteText);
+      setNoteText('');
+    }
   }
 
   return (
@@ -21,11 +27,11 @@ const AddNote = ({ saveNoteHandler }) => {
         cols='10'
         placeholder='Type to add a note...'
         value={noteText}
-        onChange={textChangeHandler}
+        onChange={handleTextChange}
       ></textarea>
       <div className={classes['note__footer']}>
-        <small>200 remaining</small>
-        <button className={classes['button--save']} onClick={buttonSaveHandler}>Save</button>
+        <small>{characterLimit - noteText.length} remaining</small>
+        <button className={classes['button--save']} onClick={handleSaveClick}>Save</button>
       </div>
     </Card>
   );
