@@ -20,14 +20,30 @@ const initialValue = [
     text: 'This is my thid Note!',
     date: '07/20/2021',
   },
-]
+];
 
 const App = () => {
   const [notes, setNotes] = useState(initialValue);
 
+  const saveNote = (text) => {
+    const date = new Date();
+    const newNote = {
+      id: nanoid(),
+      text: text,
+      date: date.toLocaleDateString(),
+    }
+
+    const newNotes = [
+      ...notes,
+      newNote
+    ]
+
+    setNotes(newNotes);
+  };
+
   return (
     <div className={classes['container']}>
-      <NotesList notes={notes} />
+      <NotesList notes={notes} saveNote={saveNote} />
     </div>
   );
 };

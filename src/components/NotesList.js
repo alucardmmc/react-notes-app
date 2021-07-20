@@ -3,13 +3,13 @@ import Note from './Note';
 
 import classes from './NotesList.module.css';
 
-const NotesList = ({ notes }) => {
+const NotesList = ({ notes, saveNote }) => {
   return (
     <div className={classes['notes-list']}>
       {notes.map((note) => (
-        <Note id={note.id} text={note.text} date={note.date} />
+        <Note key={note.id} id={note.id} text={note.text} date={note.date} />
       ))}
-      <AddNote />
+      <AddNote saveNoteHandler={saveNote} />
     </div>
   );
 };
