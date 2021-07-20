@@ -2,13 +2,12 @@ import Note from './Note';
 
 import classes from './NotesList.module.css';
 
-const NotesList = () => {
+const NotesList = ({ notes }) => {
   return (
     <div className={classes['notes-list']}>
-      <Note />
-      <Note />
-      <Note />
-      <Note />
+      {notes.map((note) => (
+        <Note id={note.id} text={note.text} date={note.date} />
+      ))}
     </div>
   );
 };
